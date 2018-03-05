@@ -54,8 +54,8 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Build ODK1 Documentation
-          command: make odk1
+          name: Build ODK2 Documentation
+          command: make odk2
       - store_artifacts:
           path: odk2-build
           destination: odk2-build
