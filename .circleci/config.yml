@@ -25,10 +25,10 @@ jobs:
           name: Build ODK1 Documentation
           command: make odk1
       - store_artifacts:
-          path: build
-          destination: build
+          path: odk1-build
+          destination: odk1-build
       - persist_to_workspace:
-          root: ~/work
+          root: ~/work/odk1
           paths:
             - build/*
     
@@ -57,10 +57,10 @@ jobs:
           name: Build ODK1 Documentation
           command: make odk1
       - store_artifacts:
-          path: build
-          destination: build
+          path: odk2-build
+          destination: odk2-build
       - persist_to_workspace:
-          root: ~/work
+          root: ~/work/odk2
           paths:
             - build/*
     
