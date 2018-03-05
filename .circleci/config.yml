@@ -1,0 +1,74 @@
+version: 2
+jobs:
+  build-odk1:
+    working_directory: ~/work
+    docker:
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run:
+          name: Install checkout requirements
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
+      - run:
+          name: Checkout binaries
+          command: git lfs pull
+      - run:
+          name: Install build requirements
+          command: |
+            sudo apt-get install pngquant
+            sudo apt-get install python-enchant
+            sudo pip install -r requirements.txt
+      -run:
+          name: Build ODK1 Documentation
+          command: make odk1
+      - store_artifacts:
+          path: build
+          destination: build
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - build/*
+    
+  build-odk2:
+    working_directory: ~/work
+    docker:
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run:
+          name: Install checkout requirements
+          command: |
+            curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+            sudo apt-get install git-lfs
+            git lfs install
+      - run:
+          name: Checkout binaries
+          command: git lfs pull
+      - run:
+          name: Install build requirements
+          command: |
+            sudo apt-get install pngquant
+            sudo apt-get install python-enchant
+            sudo pip install -r requirements.txt
+       -run:
+          name: Build ODK1 Documentation
+          command: make odk1
+      - store_artifacts:
+          path: build
+          destination: build
+      - persist_to_workspace:
+          root: ~/work
+          paths:
+            - build/*
+    
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build-odk1
+      - build-odk2
+      
+      
