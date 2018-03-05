@@ -28,9 +28,9 @@ jobs:
           path: odk1-build
           destination: odk1-build
       - persist_to_workspace:
-          root: ~/work/odk1
+          root: ~/work
           paths:
-            - build/*
+            - odk1-build/*
     
   build-odk2:
     working_directory: ~/work
@@ -60,9 +60,9 @@ jobs:
           path: odk2-build
           destination: odk2-build
       - persist_to_workspace:
-          root: ~/work/odk2
+          root: ~/work
           paths:
-            - build/*
+            - odk2-build/*
     
 workflows:
   version: 2
