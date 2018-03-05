@@ -107,3 +107,19 @@ Finally, see the :doc:`data-permission-filters` page for how to manage table and
   :caption: Advanced Topics
 
   advanced-topics
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Contributing
+
+  contributing
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Reference
+
+  verify-downloads
+  faq
+  glossary
