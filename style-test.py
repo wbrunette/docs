@@ -287,6 +287,7 @@ def get_paths(paths, src_root):
     if paths:
         search_path = search_path + "/"
         paths = [path[path.rfind('/')+1:] for path in paths]
+        print(paths)
         path_list = [search_path + path for path in paths if '.rst' in path]
 
     # Add all rst files if specific paths not provided by user
