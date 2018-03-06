@@ -23,7 +23,7 @@ jobs:
             sudo pip install -r requirements.txt
       - run:
           name: Build ODK1 Documentation
-          command: make odk1
+          command: make odk1-check
       - store_artifacts:
           path: odk1-build
           destination: odk1-build
@@ -55,7 +55,7 @@ jobs:
             sudo pip install -r requirements.txt
       - run:
           name: Build ODK2 Documentation
-          command: make odk2
+          command: make odk2-check
       - store_artifacts:
           path: odk2-build
           destination: odk2-build
