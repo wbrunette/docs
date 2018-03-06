@@ -22,8 +22,10 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Style Guide ODK1 Documentation
-          command: sudo make odk1-style-check
+          name: Style Guide Check
+          command: |
+            paths=$(git diff origin/master... --name-only)
+            sudo python style-test.py $paths
       - run:
           name: Build ODK1 Documentation
           command: make odk1
@@ -60,8 +62,10 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
-          name: Style Guide ODK2 Documentation
-          command: sudo make odk2-style-check
+          name: Style Guide Check
+          command: |
+            paths=$(git diff origin/master... --name-only)
+            sudo python style-test.py $paths
       - run:
           name: Build ODK2 Documentation
           command: make odk2
