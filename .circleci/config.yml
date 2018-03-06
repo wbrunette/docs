@@ -25,6 +25,7 @@ jobs:
           name: Style Guide Check
           command: |
             paths=$(git diff origin/master... --name-only)
+            echo $paths
             sudo python style-test.py $paths -r odk1_src
             sudo python style-test.py $paths -r shared_src
       - run:
@@ -69,6 +70,7 @@ jobs:
           name: Style Guide Check
           command: |
             paths=$(git diff origin/master... --name-only)
+            echo $paths
             sudo python style-test.py $paths -r odk2_src
             sudo python style-test.py $paths -r shared_src
       - run:
