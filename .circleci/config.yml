@@ -24,8 +24,9 @@ jobs:
       - run:
           name: Style Guide Check
           command: |
-            sudo python style-test.py -d -r odk1_src
-            sudo python style-test.py -d -r shared_src
+            paths=$(git diff origin/master... --name-only)
+            sudo python style-test.py $paths -r odk1_src
+            sudo python style-test.py $paths -r shared_src
       - run:
           name: Build ODK1 Documentation
           command: make odk1
@@ -67,8 +68,9 @@ jobs:
       - run:
           name: Style Guide Check
           command: |
-            sudo python style-test.py -d -r odk2_src
-            sudo python style-test.py -d -r shared_src
+            paths=$(git diff origin/master... --name-only)
+            sudo python style-test.py $paths -r odk2_src
+            sudo python style-test.py $paths -r shared_src
       - run:
           name: Build ODK2 Documentation
           command: make odk2
