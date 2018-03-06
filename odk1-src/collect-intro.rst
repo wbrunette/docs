@@ -2,6 +2,7 @@ ODK Collect
 ================
 
 simply etc.
+aesthetic
 
 .. _collect-introduction:
 
