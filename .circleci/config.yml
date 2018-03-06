@@ -32,7 +32,7 @@ jobs:
           command: make odk1
       - run:
           name: Check spelling of ODK1 Documentation
-          command: make odk1-spelling-check
+          command: make odk1-spell-check
       - store_artifacts:
           path: odk1-build
           destination: odk1-build
@@ -73,7 +73,7 @@ jobs:
           command: make odk2
       - run:
           name: Check spelling of ODK2 Documentation
-          command: make odk2-spelling-check
+          command: make odk2-spell-check
       - store_artifacts:
           path: odk2-build
           destination: odk2-build
