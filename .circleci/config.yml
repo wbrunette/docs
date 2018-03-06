@@ -22,8 +22,14 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
+          name: Style Guide ODK1 Documentation
+          command: sudo make odk1-style-check
+      - run:
           name: Build ODK1 Documentation
-          command: make odk1-check
+          command: make odk1
+      - run:
+          name: Check spelling of ODK1 Documentation
+          command: make odk1-spelling-check
       - store_artifacts:
           path: odk1-build
           destination: odk1-build
@@ -54,8 +60,14 @@ jobs:
             sudo apt-get install python-enchant
             sudo pip install -r requirements.txt
       - run:
+          name: Style Guide ODK2 Documentation
+          command: sudo make odk2-style-check
+      - run:
           name: Build ODK2 Documentation
-          command: make odk2-check
+          command: make odk2
+      - run:
+          name: Check spelling of ODK2 Documentation
+          command: make odk2-spelling-check
       - store_artifacts:
           path: odk2-build
           destination: odk2-build
