@@ -40,9 +40,29 @@ odk2_copy: odk2_clean
 	cp -rf $(SHARED_SRCDIR)/* $(COMPILE2_SRCDIR)
 	
 odk1: odk1_copy
-	echo @$(SPHINXBUILD) -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE1_SRCDIR)" "$(ODK1_BUILDDIR)" $(SPHINXOPTS)
 
 odk2: odk2_copy
-	echo @$(SPHINXBUILD) -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
 	@$(SPHINXBUILD) -b dirhtml "$(COMPILE2_SRCDIR)" "$(ODK2_BUILDDIR)" $(SPHINXOPTS)
+
+build-all: odk1 odk2
+	
+odk1-style-check: odk1
+	python style-test.py -r $(COMPILE1_SRCDIR)
+
+odk1-spell-check: odk1
+	sphinx-build -b spelling $(COMPILE1_SRCDIR) $(ODK1_BUILDDIR)/spelling
+	python util/check-spelling-output.py $(ODK1_BUILDDIR)
+	
+odk2-style-check: odk2
+	python style-test.py -r $(COMPILE2_SRCDIR)
+
+odk2-spell-check: odk2
+	sphinx-build -b spelling $(COMPILE2_SRCDIR) $(ODK2_BUILDDIR)/spelling
+	python util/check-spelling-output.py $(ODK2_BUILDDIR)
+
+odk1-check: odk1-style-check odk1-spell-check
+
+odk2-check: odk2-style-check odk2-spell-check
+
+check-all: odk1-check odk2-check
