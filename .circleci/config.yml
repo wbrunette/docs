@@ -131,9 +131,9 @@ jobs:
           name: Build PDF
           command: |
               cd odk2-build/latex
-              xelatex OpenDataKit.tex
-              xelatex OpenDataKit.tex
-              mv OpenDataKit.pdf ../_downloads/ODK2-Documentation.pdf
+              xelatex OpenDataKit2.tex
+              xelatex OpenDataKit2.tex
+              mv OpenDataKit2.pdf ../_downloads/ODK2-Documentation.pdf
       - store_artifacts:
           path: odk2-build/_downloads/ODK2-Documentation.pdf
           destination: ODK2-Documentation.pdf
