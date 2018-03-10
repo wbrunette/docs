@@ -37,8 +37,7 @@ jobs:
       - run:
           name: Build PDF of ODK1 Documentation
           command: |
-            sphinx-build -b latex odk1-src odk1-build/latex
-            sudo python util/resize.py odk1-build
+            make odk1-latex
       - run:
           name: Compress images
           command: pngquant odk1-build/_images/*.png --force --ext .png --verbose
@@ -109,8 +108,7 @@ jobs:
       - run:
           name: Build PDF of ODK2 Documentation
           command: |
-            sphinx-build -b latex odk2-src odk2-build/latex
-            sudo python util/resize.py odk2-build
+            make odk2-latex
       - run:
           name: Compress images
           command: pngquant odk2-build/_images/*.png --force --ext .png --verbose 
