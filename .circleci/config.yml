@@ -99,13 +99,13 @@ jobs:
             sudo python style-test.py $paths -r odkx-src
             sudo python style-test.py $paths -r shared-src
       - run:
-          name: Build ODK-X Documentation
+          name: Build ODKX Documentation
           command: make odkx-deploy
       - run:
-          name: Check spelling of ODK-X Documentation
+          name: Check spelling of ODKX Documentation
           command: make odkx-spell-check
       - run:
-          name: Build LaTex of ODK-X Documentation
+          name: Build LaTex of ODKX Documentation
           command: make odkx-latex
       - run:
           name: Compress images
@@ -132,10 +132,10 @@ jobs:
               xelatex OpenDataKitX.tex
               xelatex OpenDataKitX.tex
               mkdir -p ../_downloads
-              mv OpenDataKitX.pdf ../_downloads/ODK-X-Documentation.pdf
+              mv OpenDataKitX.pdf ../_downloads/ODKX-Documentation.pdf
       - store_artifacts:
-          path: odkx-build/_downloads/ODK-X-Documentation.pdf
-          destination: ODK-X-Documentation.pdf
+          path: odkx-build/_downloads/ODKX-Documentation.pdf
+          destination: ODKX-Documentation.pdf
       - persist_to_workspace:
           root: ~/work
           paths:
@@ -186,7 +186,7 @@ jobs:
           name: Push to S3
           command: |
               if [[ "$CIRCLE_PROJECT_USERNAME" == "opendatakit" ]]; then \
-                s3_website push --config-dir=odk2-config
+                s3_website push --config-dir=odkx-config
               fi
   deploy-shared:
     working_directory: ~/work
